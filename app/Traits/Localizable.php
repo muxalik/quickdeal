@@ -22,7 +22,7 @@ trait Localizable
       $cases = [];
 
       foreach (self::cases() as $case) {
-         $case[] = $case->localize();
+         $cases[] = $case->localize()->toArray();
       }
 
       return $cases;

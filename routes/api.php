@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('task/statuses', TaskStatusController::class)->name('task.statuses');
-Route::get('task/priorities', TaskPriorityController::class)->name('task.priorities');
+Route::get('task/statuses', TaskStatusController::class)->name('task.status');
+Route::get('task/priorities', TaskPriorityController::class)->name('task.priority');
 
 Route::apiResource('tasks', TaskController::class);

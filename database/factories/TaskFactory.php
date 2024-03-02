@@ -19,7 +19,7 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->words(mt_rand(5, 15), true),
+            'title' => fake()->text(mt_rand(5, 30)),
             'content' => fake()->text(100),
             'priority' => TaskPriorities::randomValue(),
             'status' => TaskStatuses::randomValue(),

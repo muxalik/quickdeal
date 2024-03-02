@@ -14,11 +14,15 @@ class TaskStatusFilter
    ): FilterResultObj {
       $statuses = $request->statuses ?? [];
 
-      $query->where(function (Builder $q) use ($statuses): void {
-         foreach ($statuses as $status) {
-            $q->orWhere('status', $status);
-         }
-      });
+      if (is_string($statuses)) {
+         $statuses = [];
+      }
+
+      if (!empty($statuses)) {
+         $query->where(function (Builder $q) use ($statuses): void {
+            $q->whereIn('status', $statuses);
+         });
+      }
 
       return FilterResultObj::create($request, $query);
    }

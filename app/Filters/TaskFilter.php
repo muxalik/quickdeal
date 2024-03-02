@@ -2,6 +2,7 @@
 
 namespace App\Filters;
 
+use App\Actions\Filters\Task\CreatedAtFilter;
 use App\Actions\Filters\Task\TaskStatusFilter;
 use App\Models\Task;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,6 +12,7 @@ class TaskFilter extends BaseFilter
 {
    protected array $filters = [
       TaskStatusFilter::class,
+      CreatedAtFilter::class,
    ];
 
 

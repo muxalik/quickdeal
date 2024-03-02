@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Filters\TaskFilter;
-use App\Http\Requests\Task\UpstoreTaskRequest;
+use App\Http\Requests\Task\StoreTaskRequest;
+use App\Http\Requests\Task\UpdateTaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UpstoreTaskRequest $request): TaskResource
+    public function store(StoreTaskRequest $request): TaskResource
     {
         $task = Task::create($request->validated());
 
@@ -43,7 +44,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpstoreTaskRequest $request, Task $task): TaskResource
+    public function update(UpdateTaskRequest $request, Task $task): TaskResource
     {
         $task->update($request->validated());
 

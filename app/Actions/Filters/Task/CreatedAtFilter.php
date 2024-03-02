@@ -13,22 +13,22 @@ class CreatedAtFilter
       Request $request,
       Builder $query,
    ): FilterResultObj {
-      $from = $request->updated_from;
-      $to = $request->updated_to;
+      $from = $request->created_from;
+      $to = $request->created_to;
 
       if ($from) {
          $date = Carbon::parse($from);
 
-         $query->where('updated_at', '>=', $date);
+         $query->where('created_at', '>=', $date);
       }
 
       if ($to) {
-         $date = Carbon::createFromFormat($to)
+         $date = Carbon::parse($to)
             ->setHours(23)
             ->setMinutes(59)
             ->setSeconds(59);
 
-         $query->where('updated_at', '<=', $date);
+         $query->where('created_at', '<=', $date);
       }
 
       return FilterResultObj::create($request, $query);
